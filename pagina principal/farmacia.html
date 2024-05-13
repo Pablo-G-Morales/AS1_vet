@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venta de productos y medicamentos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            background-color: #f5b24d; /* Color mostaza */
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin-right: 20px;
+        }
+        nav ul li:last-child {
+            margin-right: 0;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: white; /* Color de las letras blanco */
+            font-weight: bold;
+        }
+        .catalogo {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-gap: 20px;
+            padding: 20px;
+        }
+        .producto {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        .producto img {
+            max-width: 100%;
+            height: auto;
+        }
+        .producto h3 {
+            margin-top: 10px;
+        }
+        /* Added style for product links */
+        .producto a {
+            text-decoration: none;
+            color: #333; /* Change the color of product name */
+        }
+        .producto p {
+            color: black; /* Change the color of the price text */
+        }
+
+        /* Estilos para el icono de carrito */
+        .cart-icon {
+            position: relative;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #f5b24d; /* Color mostaza */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .cart-icon i {
+            color: white;
+            font-size: 20px;
+        }
+        .cart-icon::before {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            border-radius: 50%;
+            top: -5px;
+            right: -5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="Logo.png" alt="Logo Super Pet">
+        <nav>
+            <ul>
+                <li><a href="tienda.html">Tienda</a></li>
+                <li><a href="farmacia.html">Farmacia</a></li>
+                <li><a href="grooming.html">Grooming</a></li>
+                <li><a href="us.html">¿Quienes somos?</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <div class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+            </ul>
+            <!-- Icono de carrito -->
+
+        </nav>
+    </header>
+
+    <div class="catalogo">
+        <a href="m1info.html" class="producto">
+            <img src="medi1.png" alt="Medicamento 1">
+            <h3>Caja con 3 pipetas 0.25ML</h3>
+            <p>Q.465.00</p>
+        </a>
+        <a href="m2info.html" class="producto">
+            <img src="medi2.png" alt="Medicamento 2">
+            <h3>3 Pipetas Plus 0.5 ML</h3>
+            <p>Q.500.00</p>
+        </a>
+        <a href="m3info.html" class="producto">
+            <img src="medi3.png" alt="Medicamento 3">
+            <h3>Desparasitante tópico Revo®</h3>
+            <p>Q.95.00</p>
+        </a>
+        <a href="m4info.html" class="producto">
+            <img src="medi4.png" alt="Medicamento 4">
+            <h3>Desparasitante Felino Revo®</h3>
+            <p>Q.40.00</p>
+        </a>
+        <a href="m5info.html" class="producto">
+            <img src="medi5.png" alt="Medicamento 5">
+            <h3>PIMOBENDAN 5 MG</h3>
+            <p>Q.640.00</p>
+        </a>
+        <a href="m6info.html" class="producto">
+            <img src="medi6.png" alt="Medicamento 6">
+            <h3>INVERMIC 10 ML</h3>
+            <p>Q.25.00</p>
+        </a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venta de productos y medicamentos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .cart-icon i {
+    color: white; /* Color blanco para el icono */
+    font-size: 20px;
+}
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            background-color: #f5b24d; 
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin-right: 20px;
+        }
+        nav ul li:last-child {
+            margin-right: 0;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: white; 
+            font-weight: bold;
+        }
+        .formulario {
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            margin: 20px auto; 
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: space-between;
+            max-width: 800px; 
+        }
+        .formulario h2 {
+            margin-bottom: 20px;
+        }
+        .servicio {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .servicio label {
+            margin-right: 10px;
+        }
+        .servicio input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        .datos-personales, .observaciones {
+            margin-top: 20px;
+            width: 45%; 
+        }
+        .datos-personales label, .observaciones label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .datos-personales input, .observaciones textarea {
+            width: 100%; /* Ancho completo */
+            padding: 5px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        button[type="submit"] {
+            background-color: #f5b24d;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+            margin-left: auto; 
+            margin-right: auto; 
+        }
+        button[type="submit"]:hover {
+            background-color: #e69942;
+        }
+        button[type="submit"] img {
+            margin-right: 5px;
+            width: 20px;
+        }
+
+        
+        .calendario {
+            width: 250px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            padding: 10px;
+            box-sizing: border-box;
+            margin-top: 20px;
+        }
+        .calendario label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .calendario input[type="date"] {
+            width: calc(100% - 20px);
+            padding: 5px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        .cart-icon {
+            position: relative;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #f5b24d; /* Color mostaza */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .cart-icon i {
+            color: white;
+            font-size: 20px;
+        }
+        .cart-icon::before {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            border-radius: 50%;
+            top: -5px;
+            right: -5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="Logo.png" alt="Logo Super Pet">
+        <nav>
+            <ul>
+                <li><a href="tienda.html">Tienda</a></li>
+                <li><a href="farmacia.html">Farmacia</a></li>
+                <li><a href="grooming.html">Grooming</a></li>
+                <li><a href="us.html">¿Quienes somos?</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <div class="cart-icon" >
+                    <i><a href="carr.html" class="fas fa-shopping-cart"></a></i>
+                </div>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="formulario">
+        <div>
+            <h2>Reserva de Servicios de Grooming</h2>
+            <form id="booking-form">
+                <div class="servicio">
+                    <input type="checkbox" id="bath" name="services" value="Baño y secado">
+                    <label for="bath">Baño y secado - Q.100.00</label>
+                </div>
+                <div class="servicio">
+                    <input type="checkbox" id="haircut" name="services" value="Corte de pelo">
+                    <label for="haircut">Corte de pelo - Q.150.00</label>
+                </div>
+                <div class="servicio">
+                    <input type="checkbox" id="nail-cleaning" name="services" value="Limpieza de uñas">
+                    <label for="nail-cleaning">Limpieza de uñas - Q.50.00</label>
+                </div>
+                <div class="servicio">
+                    <input type="checkbox" id="ear-cleaning" name="services" value="Limpieza de oídos">
+                    <label for="ear-cleaning">Limpieza de oídos - Q.40.00</label>
+                </div>
+                <div class="servicio">
+                    <input type="checkbox" id="knots-removal" name="services" value="Eliminación de nudos y matas">
+                    <label for="knots-removal">Eliminación de nudos y matas - Q.120.00</label>
+                </div>
+                <div class="servicio">
+                    <input type="checkbox" id="paw-cut" name="services" value="Corte de almohadillas">
+                    <label for="paw-cut">Corte de almohadillas - Q.60.00</label>
+                </div>
+                <div class="servicio">
+                    <input type="checkbox" id="dental-hygiene" name="services" value="Higiene dental">
+                    <label for="dental-hygiene">Higiene dental - Q.80.00</label>
+                </div>
+                <div class="servicio">
+                    <input type="checkbox" id="spa-treatment" name="services" value="Tratamiento de spa">
+                    <label for="spa-treatment">Tratamiento de spa - Q.200.00</label>
+                </div>
+                <div class="servicio">
+                    <input type="checkbox" id="skin-treatment" name="services" value="Tratamiento para la piel">
+                    <label for="skin-treatment">Tratamiento para la piel - Q.180.00</label>
+                </div>
+                <div class="servicio">
+                    <input type="checkbox" id="dye-decoration" name="services" value="Tintes y decoraciones">
+                    <label for="dye-decoration">Tintes y decoraciones - Q.100.00</label>
+                </div>
+            </form>
+        </div>
+        <div>
+            <div class="calendario">
+                <label for="general-date">Escoja la fecha para su reservacion:</label>
+                <input type="date" id="general-date" name="general-date">
+            </div>
+            <div class="datos-personales">
+                <label for="email">Tu correo:</label>
+                <input type="email" id="email" name="email">
+            </div>
+            <div class="observaciones">
+                <label for="observaciones">Observaciones:</label>
+                <textarea id="observaciones" name="observaciones" rows="6"></textarea>
+            </div>
+            <button type="button" id="submit-btn"><img src="avion.png" alt="Enviar" width="20"> Enviar</button>
+        </div>
+    </div>
+
+   <script>
+    const bookingForm = document.getElementById('booking-form');
+
+    // Función para limpiar los campos del formulario
+    function limpiarFormulario() {
+        // Desmarca todos los checkboxes de servicios
+        document.querySelectorAll('input[name="services"]:checked').forEach(checkbox => {
+            checkbox.checked = false;
+        });
+        // Restablece el valor del campo de fecha
+        document.getElementById('general-date').value = '';
+        // Restablece el valor del campo de correo electrónico
+        document.getElementById('email').value = '';
+        // Restablece el valor del campo de observaciones
+        document.getElementById('observaciones').value = '';
+    }
+
+    document.getElementById('submit-btn').addEventListener('click', function() {
+        const selectedServices = [...document.querySelectorAll('input[name="services"]:checked')].map(service => service.value);
+        const generalDate = document.getElementById('general-date').value;
+        const email = document.getElementById('email').value;
+        const observaciones = document.getElementById('observaciones').value;
+
+        console.log('Servicios seleccionados:', selectedServices);
+        console.log('Fecha:', generalDate);
+        console.log('Correo electrónico:', email);
+        console.log('Observaciones:', observaciones);
+        alert('¡Servicios reservados con éxito!');
+
+        // Limpia los campos del formulario después de enviar los datos
+        limpiarFormulario();
+    });
+</script>
+</body>
+</html>

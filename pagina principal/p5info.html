@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información del Producto 5</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .producto-info {
+            max-width: 600px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .producto-info img {
+            max-width: 100%;
+            display: block;
+            margin: 0 auto;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        h2 {
+            text-align: center;
+            color: #f5b24d;
+            margin-bottom: 10px;
+        }
+        p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        ul {
+            margin-left: 20px;
+        }
+        ul li {
+            margin-bottom: 5px;
+        }
+        a {
+            color: #f5b24d;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #f18c2f;
+        }
+        .cantidad {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .cantidad input {
+            width: 50px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 0 10px;
+            padding: 5px;
+        }
+        .cantidad button {
+            background-color: #f5b24d;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .cantidad button:hover {
+            background-color: #f18c2f;
+        }
+        .btn-agregar-carrito {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+            background-color: #f5b24d;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btn-agregar-carrito:hover {
+            background-color: #f18c2f;
+        }
+    </style>
+</head>
+<body>
+    <div class="producto-info">
+        <img src="producto5.png" alt="Producto 5">
+        <h2>Cat Hill´s Digestion</h2>
+        <p>Precio: <strong>Q.190.00</strong></p>
+        <div class="cantidad">
+            <button id="restar">-</button>
+            <input type="number" id="cantidad" value="1" min="1">
+            <button id="sumar">+</button>
+        </div>
+        <p>Descripción: Alimento seco especialmente formulado para gatos con sensibilidad digestiva. Contiene ingredientes de fácil digestión y fibra para una mejor salud gastrointestinal.</p>
+        <p>Características:</p>
+        <ul>
+            <li>Alimento seco para gatos con sensibilidad digestiva</li>
+            <li>Contiene ingredientes de fácil digestión</li>
+            <li>Rico en fibra para una mejor salud gastrointestinal</li>
+        </ul>
+        <p>Disponibilidad: <strong>En stock</strong></p>
+        <button class="btn-agregar-carrito">Agregar al carrito</button>
+        <p><a href="tienda.html">Volver a la tienda</a></p>
+        <div id="confirmacion" class="confirmacion" style="display: none;">¡Producto añadido al carrito!</div>
+    </div>
+
+    <script>
+        document.getElementById('sumar').addEventListener('click', function() {
+            var cantidadInput = document.getElementById('cantidad');
+            cantidadInput.value = parseInt(cantidadInput.value) + 1;
+        });
+
+        document.getElementById('restar').addEventListener('click', function() {
+            var cantidadInput = document.getElementById('cantidad');
+            if (parseInt(cantidadInput.value) > 1) {
+                cantidadInput.value = parseInt(cantidadInput.value) - 1;
+            }
+        });
+        function mostrarMensajeConfirmacion() {
+            const confirmacion = document.getElementById('confirmacion');
+            confirmacion.style.display = 'block';
+        }
+
+        document.getElementById('btnAgregarCarrito').addEventListener('click', function() {
+          
+            mostrarMensajeConfirmacion();
+        });
+    </script>
+</body>
+</html>

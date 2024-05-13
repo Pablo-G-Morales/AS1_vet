@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperPet - Todo para tu mascota</title>
+    <link rel="stylesheet" href="CSS/Pablo/styles.css">
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        .header {
+            background-color: #ff7f00;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            max-height: 50px;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        .formulario button {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+            border: none; /* Elimina el borde */
+            box-shadow: none; /* Elimina la sombra */
+        }
+
+        .contenido {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+        }
+
+        .formulario {
+            margin-top: 20px;
+            flex: 1;
+        }
+
+        .formulario label,
+        .formulario input,
+        .formulario textarea,
+        .formulario button {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .whatsapp {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .whatsapp img {
+            max-width: 100px;
+        }
+
+        .btn-image {
+            margin-left: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="logo">
+            <a href="index.html">
+                <img src="Recursos/Pablo/logo.png" alt="Logo">
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="tienda.html">Tienda</a>
+            <a href="farmacia.html">Farmacia</a>
+            <a href="grooming.html">Grooming</a>
+            <a href="us.html">Quiénes Somos</a>
+            <a href="contacto.html">Contacto</a>
+        </div>
+    </div>
+
+    <div class="contenido">
+        <img src="Recursos/Pablo/gatocontacto.png" alt="Imagen" alt="Imagen" style="width: 400px; float: right;">
+        <div class="formulario">
+            <h2>Contáctanos</h2>
+            <form id="formulario" action="https://script.google.com/macros/s/AKfycbx_V7p1aiBgAG9JkubdRIWubrJIgAc8GSuo36WfL1J1mUZSd_VWcMO_HFMYaR8DcZJatw/exec" method="POST">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+            
+                <label for="correo">Correo:</label>
+                <input type="email" id="correo" name="correo" required>
+            
+                <label for="mensaje">Mensaje:</label>
+                <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+
+                <center><a class="boton-enviar" onclick="enviarFormulario()">Enviar</a></center>
+                <center>
+                    <a onclick="mostrarAlerta()">
+                        <img src="Recursos/Pablo/whatsapp-logo.png" alt="WhatsApp" alt="Imagen" style="width: 180px;">
+                    </a>
+                </center>
+                
+                <script>
+                    function mostrarAlerta() {
+                        alert("Aquí puede haber un Link de WhatsApp");
+                    }
+                </script>
+                
+            </form>
+        </div>
+    </div>
+
+   
+    
+
+
+    <footer>
+        <p>Derechos Reservados &copy; 2024</p>
+    </footer>
+
+    <script>
+        function enviarFormulario() {
+            document.getElementById("formulario").submit();
+        }
+    </script>
+</body>
+</html>
