@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venta de productos y medicamentos</title>
+    <script src="tienda.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            background-color: #f5b24d; 
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin-right: 20px;
+        }
+        nav ul li:last-child {
+            margin-right: 0;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: white; 
+            font-weight: bold;
+        }
+        .catalogo {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-gap: 20px;
+            padding: 20px;
+        }
+        .producto {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        .producto img {
+            max-width: 100%;
+            height: auto;
+        }
+        .producto h3 {
+            margin-top: 10px;
+        }
+        
+        .producto a {
+            text-decoration: none;
+            color: #333; 
+        }
+        .producto p {
+            color: black; 
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="Logo.png" alt="Logo Super Pet">
+        <nav>
+            <ul>
+                <li><a href="tienda.html">Tienda</a></li>
+                <li><a href="farmacia.html">Farmacia</a></li>
+                <li><a href="grooming.html">Grooming</a></li>
+                <li><a href="quienes_somos.html">¿Quienes somos?</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="catalogo">
+        <a href="p1info.html" class="producto">
+            <img src="producto1.png" alt="Producto 1">
+            <h3>Diet Adulto + Small bites</h3>
+            <p>Q.160.00</p>
+        </a>
+        <a href="p2info.html" class="producto">
+            <img src="producto2.png" alt="Producto 2">
+            <h3>Hill's Science Diet Kitten</h3>
+            <p>Q.160.00</p>
+        </a>
+        <a href="p3info.html" class="producto">
+            <img src="producto3.png" alt="Producto 3">
+            <h3>Hill's Diet Adult 15 KG</h3>
+            <p>Q.890.00</p>
+        </a>
+        <a href="p4info.html" class="producto">
+            <img src="producto4.png" alt="Producto 4">
+            <h3>Hill's Lata L/D</h3>
+            <p>Q.40.00</p>
+        </a>
+        <a href="p5info.html" class="producto">
+            <img src="producto5.png" alt="Producto 5">
+            <h3>Cat Hill´s Digestion</h3>
+            <p>Q.190.00</p>
+        </a>
+        <a href="p6info.html" class="producto">
+            <img src="producto6.png" alt="Producto 6">
+            <h3>Kitten Hill's Diet Lata</h3>
+            <p>Q.20.00</p>
+        </a>
+    </div>
+    <div class="catalogo" id="catalogo">
+      
+    </div>
+
+    <script src="tienda.js"></script> 
+</body>
+
+ 
+    
+</html>

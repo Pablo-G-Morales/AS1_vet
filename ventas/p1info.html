@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información del Producto 1</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .producto-info {
+            max-width: 600px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .producto-info img {
+            max-width: 100%;
+            display: block;
+            margin: 0 auto;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        h2 {
+            text-align: center;
+            color: #f5b24d;
+            margin-bottom: 10px;
+        }
+        p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        ul {
+            margin-left: 20px;
+        }
+        ul li {
+            margin-bottom: 5px;
+        }
+        a {
+            color: #f5b24d;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #f18c2f;
+        }
+        .cantidad {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .cantidad input {
+            width: 50px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 0 10px;
+            padding: 5px;
+        }
+        .cantidad button {
+            background-color: #f5b24d;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .cantidad button:hover {
+            background-color: #f18c2f;
+        }
+        .btn-agregar-carrito {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+            background-color: #f5b24d;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btn-agregar-carrito:hover {
+            background-color: #f18c2f;
+        }
+        /* Estilos para el cuadro de confirmación */
+        .confirmacion {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            display: none;
+            z-index: 999;
+            animation: animacion-confirmacion 2s ease forwards;
+        }
+
+        @keyframes animacion-confirmacion {
+            0% {
+                transform: translate(-50%, -50%) scale(0.1);
+                opacity: 0;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.2);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="producto-info">
+        <img src="producto1.png" alt="Producto 2">
+        <h2>Diet Adulto + Small bites</h2>
+        <p>Precio: <strong>Q.160.00</strong></p>
+        <div class="cantidad">
+            <button id="restar">-</button>
+            <input type="number" id="cantidad" value="1" min="1">
+            <button id="sumar">+</button>
+        </div>
+        <p>Alimento completo y equilibrado para perros adultos. Formulado con ingredientes de alta calidad para satisfacer las necesidades nutricionales de tu mascota. Contiene pequeñas croquetas adaptadas para perros de razas pequeñas.</p>
+        <p>Características:</p>
+        <ul>
+            <li>Alimento para perros adultos</li>
+            <li>Tamaño de las croquetas adaptado para perros pequeños</li>
+            <li>Contiene nutrientes esenciales para la salud del perro</li>
+        </ul>
+        <p>Disponibilidad: <strong>En stock</strong></p>
+        <button class="btn-agregar-carrito" id="btnAgregarCarrito">Agregar al carrito</button>
+        <p><a href="tienda.html">Volver a la tienda</a></p>
+        <audio id="audioConfirmacion" src="dragon_ball.mp3"></audio>
+        <div class="confirmacion" id="confirmacion">¡Producto añadido al carrito!</div>
+    </div>
+
+    <script src="compra1.js"></script>
+    <script>
+        document.getElementById('sumar').addEventListener('click', function() {
+            var cantidadInput = document.getElementById('cantidad');
+            cantidadInput.value = parseInt(cantidadInput.value) + 1;
+        });
+
+        document.getElementById('restar').addEventListener('click', function() {
+            var cantidadInput = document.getElementById('cantidad');
+            if (parseInt(cantidadInput.value) > 1) {
+                cantidadInput.value = parseInt(cantidadInput.value) - 1;
+            }
+        });
+
+        function mostrarMensajeConfirmacion() {
+            const confirmacion = document.getElementById('confirmacion');
+            confirmacion.style.display = 'block';
+            document.getElementById('audioConfirmacion').play();
+            setTimeout(function() {
+                confirmacion.style.display = 'none';
+            }, 2000);
+        }
+
+        document.getElementById('btnAgregarCarrito').addEventListener('click', function() {
+            mostrarMensajeConfirmacion();
+            // Aquí puedes agregar la lógica para guardar la compra en el archivo JS
+        });
+    </script>
+</body>
+</html>
