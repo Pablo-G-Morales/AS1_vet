@@ -1,0 +1,59 @@
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+  
+  h2 {
+    margin-top: 0;
+  }
+  
+  /* Form styles */
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .field {
+    margin-bottom: 10px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input[type="text"],
+  input[type="date"],
+  input[type="time"],
+  select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button[type="submit"] {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .error {
+    color: #af4c4c;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .success {
+    color: #4CAF50;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }

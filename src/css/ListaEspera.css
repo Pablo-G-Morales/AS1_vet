@@ -1,0 +1,154 @@
+/* Container principal */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+/* Container principal */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+/* ... (rest of the CSS remains the same) */
+
+/* Formulario */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Etiqueta */
+label {
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* Entrada de texto y selección */
+input, select {
+  margin-top: 5px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 200px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease-in-out;
+}
+
+/* Estilo al enfocar */
+input:focus, select:focus {
+  outline: none;
+  border-color: #4CAF50;
+}
+
+/* Botón */
+button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* Estilo al pasar el cursor */
+button:hover {
+  background-color: #45a049;
+}
+
+/* Botón deshabilitado */
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Tabla */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+}
+
+/* Cabecera y celda de la tabla */
+th, td {
+  padding: 15px;
+  border: 1px solid #ccc;
+  text-align: left;
+  font-size: 1rem;
+}
+
+/* Cabecera de la tabla */
+th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+/* Estilo de los botones de finalización */
+button.finalizar {
+  background-color: red;
+}
+
+/* Elementos del menú */
+.menu-item {
+  margin-top: 30px;
+  display: inline-block;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #000;
+  font-size: 1rem;
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* Estilo al pasar el cursor sobre los elementos del menú */
+.menu-item:hover {
+  background-color: #f2f2f2;
+}
+
+/* Estilos para los diferentes estados */
+.estado.siendo-atendido {
+  color: green;
+}
+
+.estado.en-espera {
+  color: yellow;
+}
+
+.estado.finalizado {
+  color: blue;
+}
+
+/* Notificación de error */
+.error-notification {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 15px;
+  background-color: #ffcccc;
+  color: #cc0000;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* Mostrar la notificación */
+.error-notification.show {
+  opacity: 1;
+}

@@ -1,0 +1,44 @@
+.cita-container {
+    display: flex;
+    flex-wrap: nowrap; /* prevent text from wrapping to the next line */
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .cita-data {
+    margin: 0;
+    padding: 0;
+    font-size: 18px; /* increase font size */
+    white-space: nowrap; /* prevent text from wrapping to the next line */
+  }
+  
+  .cita-form {
+    display: flex;
+    flex-wrap: nowrap; /* prevent text from wrapping to the next line */
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .cita-input {
+    flex-grow: 1;
+    margin: 5px 0;
+    padding: 5px;
+    font-size: 18px; /* increase font size */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .cita-button {
+    margin: 5px 0;
+    padding: 5px 10px;
+    font-size: 18px; /* increase font size */
+    border: none;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .cita-button:hover {
+    background-color: #45a049;
+  }
