@@ -1,0 +1,142 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-color: #ffffff; /* blanco */
+    color: #333; /* gris oscuro */
+}
+
+.justificar {
+    text-align: justify;
+}
+
+.logo img {
+    max-height: 50px;
+}
+
+.nav-links a {
+    color: #ffffff; /* blanco */
+    text-decoration: none;
+    margin-left: 20px;
+    font-family: arial black;
+}
+.acceso-empleados {
+    font-family: Cascadia Mono;
+    background-color: #cccccc; /* gris */
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999; /* Asegura que esté por encima de otros elementos */
+}
+
+.header {
+    background-color: #ff7f00; /* anaranjado */
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px; /* Agregamos margen superior para evitar que se solape con el bloque acceso-empleados */
+}
+
+/* Resto de estilos... */
+
+
+.slider {
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    overflow: hidden;
+    position: relative;
+
+}
+
+.slider img {
+    width: 100%;
+    display: block;
+}
+
+footer {
+    background-color: #ff7f00; /* anaranjado */
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-family: arial black;
+}
+
+.acceso-empleados {
+    background-color: #cccccc; /* gris */
+    padding: 0.001px;
+    text-align: right;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 6%;
+    width: 100%;
+    z-index: 999; /* Asegura que esté por encima de otros elementos */
+}
+
+/* Resto de estilos... */
+
+.contenido {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.texto {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: justify;
+}
+
+.video {
+    flex: 1;
+
+
+}
+
+.video iframe {
+    width: 80%;
+}
+
+
+.slider {
+    position:relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.slides img {
+    width: 100%;
+    height: auto;
+}
+
+button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 2;
+}
+
+.prev {
+    left: 0;
+}
+
+.next {
+    right: 0;
+}
