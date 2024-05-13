@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registro de Mascotas</title>
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #f5b24d; 
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li:last-child {
+    margin-right: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white; 
+    font-weight: bold;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+}
+
+.form-group {
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input[type="text"] {
+    width: calc(100% - 40px);
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+input[type="submit"] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+#confirmacion {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #4CAF50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 24px;
+    visibility: hidden;
+    margin: 20px auto;
+}
+
+#confirmacion::before {
+    content: '\2713';
+    font-family: Arial, sans-serif;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.table th, .table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.table th {
+    background-color: #f2f2f2;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <img src="Logo.png" alt="Logo Super Pet">
+    <nav>
+        <ul>
+            <li><a href="dueno.html">Registro dueño</a></li>
+            <li><a href="mascota.html">Registro Mascota</a></li>
+            <li><a href="calendario.html">Calendario</a></li>
+            <li><a href="infodueno.html">Informacion de dueño</a></li>
+            <li><a href="infomascota.html">Informacion de Mascota</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="container">
+    <h2>Registro de Mascotas</h2>
+
+    <form id="registroMascotaForm">
+        <div class="form-group">
+            <label for="nombre">Nombre de la mascota:</label>
+            <input type="text" id="nombre" name="nombre" required>
+        </div>
+    
+        <div class="form-group">
+            <label for="especie">Especie:</label>
+            <input type="text" id="especie" name="especie" required>
+        </div>
+    
+        <div class="form-group">
+            <label for="raza">Raza:</label>
+            <input type="text" id="raza" name="raza" required>
+        </div>
+    
+        <div class="form-group">
+            <label for="dueno">Dueño:</label>
+            <input type="text" id="dueno" name="dueno" required>
+        </div>
+    
+        <input type="submit" value="Registrar mascota">
+    </form>
+
+    <!-- Elemento para mostrar la confirmación -->
+    <div id="confirmacion"></div>
+</div>
+
+<script src="datosMascotas.js"></script>
+<script>
+// Función para registrar una mascota
+function registrarMascota(nombre, especie, raza, dueno) {
+    // Obtener los datos almacenados en el archivo JavaScript
+    let mascotasJS = JSON.parse(localStorage.getItem('mascotasJS')) || [];
+
+    // Agregar la nueva mascota al arreglo
+    mascotasJS.push({ nombre, especie, raza, dueno });
+
+    // Guardar los datos actualizados en el archivo JavaScript
+    localStorage.setItem('mascotasJS', JSON.stringify(mascotasJS));
+
+    // Obtener los datos almacenados en el archivo de texto
+    fetch('mascotas.txt', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(mascotasJS),
+    })
+    .then(response => {
+        if (response.ok) {
+            console.log('Mascota registrada y datos actualizados en el archivo de texto.');
+        } else {
+            console.error('Error al actualizar el archivo de texto.');
+        }
+    });
+
+    // Mostrar la confirmación
+    let confirmacion = document.getElementById("confirmacion");
+    confirmacion.textContent = "✔️";
+    confirmacion.style.visibility = "visible";
+}
+
+// Escuchar el evento de envío del formulario
+document.getElementById("registroMascotaForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    // Obtener los valores del formulario
+    let nombre = document.getElementById("nombre").value;
+    let especie = document.getElementById("especie").value;
+    let raza = document.getElementById("raza").value;
+    let dueno = document.getElementById("dueno").value;
+
+    // Registrar la mascota con los valores del formulario
+    registrarMascota(nombre, especie, raza, dueno);
+});
+</script>
+
+</body>
+</html>

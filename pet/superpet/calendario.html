@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venta de productos y medicamentos</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 20px;
+            background-color: #fcf8f3;
+        }
+        header {
+            width: 100%;
+            background-color: #f5b24d;
+            padding: 20px 0;
+            text-align: center;
+        }
+        header img {
+            max-width: 200px;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin-right: 20px;
+        }
+        nav ul li:last-child {
+            margin-right: 0;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: white; 
+            font-weight: bold;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: #f18c28;
+        }
+        .container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+            border-top: 2px solid black;
+            border-bottom: 2px solid black;
+        }
+        .half-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 10px;
+        }
+        .half-container:first-child {
+            border-right: 2px solid black;
+        }
+        .half-container:last-child {
+            border-left: 2px solid black;
+        }
+        .calendar-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .calendar-title {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #f18c28;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .calendar {
+            width: 100%;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f18c28;
+            padding: 10px;
+            border-radius: 12px 12px 0 0;
+        }
+        .calendar-header select {
+            border: none;
+            background-color: #fff;
+            font-size: 1rem;
+            padding: 8px;
+            border-radius: 4px;
+        }
+        .calendar-body {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            padding: 10px;
+        }
+        .calendar-day {
+            border: 1px solid #ccc;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 16px;
+            color: #333;
+        }
+        .calendar-day:hover {
+            background-color: #f5f5f5;
+        }
+        .form-container {
+            max-width: 400px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .form-container h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #f18c28;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .form-group select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+            color: #333;
+        }
+        .form-group button {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 18px;
+        }
+        .form-group button:hover {
+            background-color: #45a049;
+        }
+        .data-container {
+            max-width: 800px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+        .data-container h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #f18c28;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .data-container p {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .confirm-btn {
+            background-color: #1e90ff;
+            color: #fff;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 18px;
+        }
+        .confirm-btn:hover {
+            background-color: #0078d4;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="Logo.png" alt="Logo Super Pet">
+        <nav>
+            <ul>
+                <li><a href="dueno.html">Registro dueño</a></li>
+                <li><a href="mascota.html">Registro Mascota</a></li>
+                <li><a href="calendario.html">Calendario</a></li>
+                <li><a href="infodueno.html">Informacion de dueño</a></li>
+                <li><a href="infomascota.html">Informacion de Mascota</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="half-container">
+            <div class="calendar-container">
+                <h2 class="calendar-title">Calendario de Citas</h2>
+                <div class="calendar">
+                    <div class="calendar-header">
+                        <select id="mes" name="mes">
+                            <option value="1">Enero</option>
+                            <option value="2">Febrero</option>
+                            <option value="3">Marzo</option>
+                            <option value="4">Abril</option>
+                            <option value="5">Mayo</option>
+                            <option value="6">Junio</option>
+                            <option value="7">Julio</option>
+                            <option value="8">Agosto</option>
+                            <option value="9">Septiembre</option>
+                            <option value="10">Octubre</option>
+                            <option value="11">Noviembre</option>
+                            <option value="12">Diciembre</option>
+                        </select>
+                        <select id="anio" name="anio">
+                            <option value="2022">2022</option>
+                            <option value="2023">2023</option>
+                            <option value="2024">2024</option>
+                            <option value="2025">2025</option>
+                            <option value="2026">2026</option>
+                        </select>
+                    </div>
+
+                    <div class="calendar-body">
+                        <!-- Días del calendario aquí -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="half-container">
+            <div class="form-container">
+                <h2>Agendar Cita</h2>
+                <form id="cita-form">
+                    <div class="form-group">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" name="nombre" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="fecha">Fecha:</label>
+                        <input type="text" id="fecha" name="fecha" class="form-control" readonly required>
+                    </div>
+                    <div class="form-group">
+                        <label for="duracion">Duración:</label>
+                        <select id="duracion" name="duracion" class="form-control">
+                            <option value="10">10 minutos</option>
+                            <option value="30">30 minutos</option>
+                            <option value="60">1 hora</option>
+                            <option value="90">1 hora y media</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="horario">Horario:</label>
+                        <select id="horario" name="horario" class="form-control">
+                            <option value="9:00 AM">9:00 AM</option>
+                            <option value="9:15 AM">9:15 AM</option>
+                            <option value="9:30 AM">9:30 AM</option>
+                            <option value="9:45 AM">9:45 AM</option>
+                            <option value="10:00 AM">10:00 AM</option>
+                            <option value="10:15 AM">10:15 AM</option>
+                            <option value="3:00 PM">3:00 PM</option>
+                            <option value="3:15 PM">3:15 PM</option>
+                            <option value="3:30 PM">3:30 PM</option>
+                            <option value="3:45 PM">3:45 PM</option>
+                            <option value="4:00 PM">4:00 PM</option>
+                            <option value="4:15 PM">4:15 PM</option>
+                            <option value="4:30 PM">4:30 PM</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Agregar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="data-container" id="data-container" style="display: none;">
+        <h2>Datos Ingresados</h2>
+        <div id="data"></div>
+        <button id="confirm-btn" class="confirm-btn">Confirmar</button>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const calendarBody = document.querySelector(".calendar-body");
+            const fechaInput = document.getElementById("fecha");
+            const mesSelect = document.getElementById("mes");
+            const anioSelect = document.getElementById("anio");
+
+            // Función para obtener el número de días en un mes y año dados
+            function getDaysInMonth(month, year) {
+                return new Date(year, month, 0).getDate();
+            }
+
+            // Función para generar el calendario
+            function generateCalendar(month, year) {
+                calendarBody.innerHTML = ""; // Limpiar el contenido existente
+
+                const daysInMonth = getDaysInMonth(month, year);
+                const firstDayOfMonth = new Date(year, month - 1, 1).getDay(); // 0: domingo, 1: lunes, ..., 6: sábado
+
+                // Agregar celdas vacías para los días anteriores al primer día del mes
+                for (let i = 0; i < firstDayOfMonth; i++) {
+                    const emptyCell = document.createElement("div");
+                    emptyCell.classList.add("calendar-day", "empty");
+                    calendarBody.appendChild(emptyCell);
+                }
+
+                // Agregar los días del mes
+                for (let day = 1; day <= daysInMonth; day++) {
+                    const calendarDay = document.createElement("div");
+                    calendarDay.classList.add("calendar-day");
+                    calendarDay.textContent = day;
+                    calendarDay.addEventListener("click", function () {
+                        const selectedDate = new Date(year, month - 1, day);
+                        const formattedDate = selectedDate.toLocaleDateString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+                        fechaInput.value = formattedDate;
+                    });
+                    calendarBody.appendChild(calendarDay);
+                }
+            }
+
+            // Generar el calendario para el mes y año actuales al cargar la página
+            const currentDate = new Date();
+            generateCalendar(currentDate.getMonth() + 1, currentDate.getFullYear());
+
+            // Manejar la presentación de los datos ingresados
+            const citaForm = document.getElementById("cita-form");
+            const dataContainer = document.getElementById("data-container");
+            const data = document.getElementById("data");
+
+            citaForm.addEventListener("submit", function (event) {
+                event.preventDefault();
+                const nombre = document.getElementById("nombre").value;
+                const duracion = document.getElementById("duracion").value;
+                const horario = document.getElementById("horario").value;
+                const selectedDate = new Date(anioSelect.value, mesSelect.value - 1, 1); // Usar el mes y año seleccionados
+                const formattedDate = selectedDate.toLocaleDateString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+                const nuevaCita = document.createElement("p");
+                nuevaCita.textContent = `Nombre: ${nombre}, Fecha: ${formattedDate}, Duración: ${duracion}, Horario: ${horario}`;
+                data.appendChild(nuevaCita);
+                dataContainer.style.display = "block";
+            });
+
+            // Guardar los datos en citas.js al hacer clic en Confirmar
+            const confirmBtn = document.getElementById("confirm-btn");
+            confirmBtn.addEventListener("click", function () {
+                const citas = data.querySelectorAll("p");
+                const citasArray = Array.from(citas).map(cita => cita.textContent);
+                // Aquí puedes agregar el código para guardar las citas en citas.js
+                console.log(citasArray); // Simplemente imprime las citas en la consola por ahora
+                // Mostrar confirmación
+                alert("¡Los datos se han guardado correctamente!");
+            });
+        });
+    </script>
+</body>
+</html>

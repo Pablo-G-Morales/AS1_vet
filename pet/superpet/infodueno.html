@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Información de Dueño</title>
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #f5b24d; 
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li:last-child {
+    margin-right: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white; 
+    font-weight: bold;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+}
+
+.form-group {
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input[type="text"] {
+    width: calc(100% - 40px);
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+input[type="submit"] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+#confirmacion {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #4CAF50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 24px;
+    visibility: hidden;
+    margin: 20px auto;
+}
+
+#confirmacion::before {
+    content: '\2713';
+    font-family: Arial, sans-serif;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.table th, .table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.table th {
+    background-color: #f2f2f2;
+}
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.registro-mascota {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.registro-mascota:last-child {
+    margin-bottom: 0;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <img src="Logo.png" alt="Logo Super Pet">
+    <nav>
+        <ul>
+            <li><a href="dueno.html">Registro dueño</a></li>
+            <li><a href="mascota.html">Registro Mascota</a></li>
+            <li><a href="calendario.html">Calendario</a></li>
+            <li><a href="infodueno.html">Informacion de dueño</a></li>
+            <li><a href="infomascota.html">Informacion de Mascota</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="container">
+    <h2>Información de los Dueños Registradas</h2>
+
+    <div id="datos-dueno">
+        <!-- Los datos de las mascotas registradas se mostrarán aquí -->
+    </div>
+  
+    <a href="dueno.html" class="btn-volver">Registrar Nuevo Dueno</a>
+</div>
+
+
+<script src="datosdenos.js"></script>
+<script>
+    // Función para mostrar los datos de todos los dueños registrados
+    function mostrarDatosDuenos() {
+        let datosDuenoDiv = document.getElementById("datos-dueno");
+    
+        // Mostrar datos del archivo JavaScript
+        let duenosJS = JSON.parse(localStorage.getItem('duenosJS')) || [];
+        duenosJS.forEach(dueno => {
+            mostrarDueno(dueno, datosDuenoDiv);
+        });
+    
+        // Mostrar datos del archivo de texto
+        fetch('duenos.txt')
+            .then(response => response.text())
+            .then(text => {
+                let duenosTxt = text ? JSON.parse(text) : [];
+                duenosTxt.forEach(dueno => {
+                    mostrarDueno(dueno, datosDuenoDiv);
+                });
+            });
+    }
+    
+    // Función para mostrar un dueño en la interfaz
+    function mostrarDueno(dueno, container) {
+        let registroDuenoDiv = document.createElement("div");
+        registroDuenoDiv.classList.add("registro-dueno");
+        registroDuenoDiv.innerHTML = "<strong>Identificación:</strong> " + dueno.identificacion + "<br>" +
+                                        "<strong>Nombre:</strong> " + dueno.nombre + "<br>" +
+                                        "<strong>Apellido:</strong> " + dueno.apellido + "<br>" +
+                                        "<strong>Correo Electrónico:</strong> " + dueno.correo + "<br>" +
+                                        "<strong>Teléfono:</strong> " + dueno.telefono + "<br><br>";
+        container.appendChild(registroDuenoDiv);
+    }
+    
+    // Mostrar los datos de los dueños al cargar la página
+    window.onload = function() {
+        mostrarDatosDuenos();
+    };
+    </script>
+
+</body>
+</html>

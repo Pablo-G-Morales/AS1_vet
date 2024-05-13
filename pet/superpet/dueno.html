@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registro de Dueno</title>
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #f5b24d; 
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li:last-child {
+    margin-right: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white; 
+    font-weight: bold;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+}
+
+.form-group {
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input[type="text"] {
+    width: calc(100% - 40px);
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+input[type="submit"] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+#confirmacion {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #4CAF50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 24px;
+    visibility: hidden;
+    margin: 20px auto;
+}
+
+#confirmacion::before {
+    content: '\2713';
+    font-family: Arial, sans-serif;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.table th, .table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.table th {
+    background-color: #f2f2f2;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <img src="Logo.png" alt="Logo Super Pet">
+    <nav>
+        <ul>
+            <li><a href="dueno.html">Registro dueño</a></li>
+            <li><a href="mascota.html">Registro Mascota</a></li>
+            <li><a href="calendario.html">Calendario</a></li>
+            <li><a href="infodueno.html">Informacion de dueño</a></li>
+            <li><a href="infomascota.html">Informacion de Mascota</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="container">
+    <h2>Registro de Dueño</h2>
+
+    <form id="registroMascotaForm">
+        <div class="form-group">
+            <label for="identificacion">Identificación</label>
+            <input type="text" id="identificacion" name="identificacion" required>
+        </div>
+    
+        <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" required>
+        </div>
+    
+        <div class="form-group">
+            <label for="apellido">Apellido</label>
+            <input type="text" id="apellido" name="apellido" required>
+        </div>
+    
+        <div class="form-group">
+            <label for="correo">Correo Electrónico</label>
+            <input type="text" id="correo" name="correo" required>
+        </div>
+
+        <div class="form-group">
+            <label for="telefono">Teléfono</label>
+            <input type="text" id="telefono" name="telefono" required>
+        </div>
+    
+        <input type="submit" value="Registrar mascota">
+    </form>
+
+    <!-- Elemento para mostrar la confirmación -->
+    <div id="confirmacion"></div>
+</div>
+
+<script src="datosdenos.js"></script>
+<script>
+// Función para registrar un dueño
+function registrarDueno(identificacion, nombre, apellido, correo, telefono) {
+    // Obtener los datos almacenados en el archivo JavaScript
+    let duenosJS = JSON.parse(localStorage.getItem('duenosJS')) || [];
+
+    // Agregar el nuevo dueño al arreglo
+    duenosJS.push({ identificacion, nombre, apellido, correo, telefono });
+
+    // Guardar los datos actualizados en el archivo JavaScript
+    localStorage.setItem('duenosJS', JSON.stringify(duenosJS));
+
+    // Obtener los datos almacenados en el archivo de texto
+    fetch('duenos.txt', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(duenosJS),
+    })
+    .then(response => {
+        if (response.ok) {
+            console.log('Dueño registrado y datos actualizados en el archivo de texto.');
+        } else {
+            console.error('Error al actualizar el archivo de texto.');
+        }
+    });
+
+    // Mostrar la confirmación
+    let confirmacion = document.getElementById("confirmacion");
+    confirmacion.textContent = "✔️";
+    confirmacion.style.visibility = "visible";
+}
+
+// Escuchar el evento de envío del formulario
+document.getElementById("registroDuenoForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    // Obtener los valores del formulario
+    let identificacion = document.getElementById("identificacion").value;
+    let nombre = document.getElementById("nombre").value;
+    let apellido = document.getElementById("apellido").value;
+    let correo = document.getElementById("correo").value;
+    let telefono = document.getElementById("telefono").value;
+
+    // Registrar el dueño con los valores del formulario
+    registrarDueno(identificacion, nombre, apellido, correo, telefono);
+});
+</script>
+
+</body>
+</html>
