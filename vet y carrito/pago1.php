@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width-device-width, inicial-scale=1.0" />
+    <title>Envio a domicilio</title>
+    <link rel="stylesheet" href="sosaStyle.css" />
+    <script src="sosaJS.js" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</head>
+<body>
+  <?php
+  session_start();
+
+
+  // Obtain product data from the session
+  $productos = $_SESSION['productos'];
+  $cantidades = $_SESSION['cantidades'];
+
+  // Calculate subtotal
+  $subtotal = 0;
+  for ($i = 0; $i < count($productos); $i++) {
+    $subtotal += $productos[$i] * $cantidades[$i];
+  }
+
+  // Display the products
+  for ($i = 0; $i < count($productos); $i++) {
+    echo "
+    <div class='producto'>
+      <span class='cantidad'><input type='number' id='cantidad{$i + 1}' min='1' max='5' value='{$cantidades[$i]}'></span>
+      <span class='nombre'>{$productos[$i]}</span>
+      <span class='precio'>{$productos[$i]}</span>
+      <!-- Add the actual product image URL here -->
+      <img src='prod1.jpg' alt='Product {$i + 1}' class='product-image'>
+    </div>
+    ";
+  }
+
+  // Display the subtotal, shipping, and total
+  echo "
+  <div class='precios'>
+    <p class='subto'>Subtotal: <span class='subtotal'>{$subtotal}</span></p>
+    <p class='envio'>Precio de envio: <span class='envio'>30</span></p>
+    <p class='total-label'>Total a pagar: <span class='total'>{$subtotal + 30}</span></p>
+  </div>
+  ";
+  ?>
+  
+    <div class = "wrap">
+        <div class="header1">
+            <div class="empleados-container">
+              <p>Acceso a empleados 👤</p> 
+              <div class="empleados">
+                
+              </div>
+            </div>
+          </div>
+        
+        <div class="header">
+            <div class="logo">
+                <img src="logo.png" alt="Logo">
+            </div>
+
+            <div class="nav-links">
+                <a href="#">Tienda</a>
+                <a href="#">Farmacia</a>
+                <a href="#">Grooming</a>
+                <a href="#">Quiénes Somos</a>
+                <a href="#">Contacto</a>
+                <a href="#" class="shopping-cart"><img class="product-image" src="carrito.png" alt="Shopping Cart"></a>
+            </div>
+        </div>
+
+        <div class="side side-left">
+            <h2>Productos</h2>
+
+            <div class="producto">
+                <span class="cantidad"><input type="number" id="cantidad1" min="1" max="5" value="1"></span>
+                <span class="nombre">Pimobendan 5mg</span>
+                <span class="precio">650</span>
+                <img src="prod1.jpg" alt="Product 1" class="product-image">
+              </div>
+              
+              <div class="producto">
+                <span class="cantidad"><input type="number" id="cantidad2" min="1" max="5" value="1"></span>
+                <span class="nombre">Hill's Lata L/d</span>
+                <span class="precio">80</span>
+                <img src="prod2.jpeg" alt="Product 2" class="product-image">
+              </div>
+              
+              <div class="precios">
+                <p class="subto">Subtotal: <span class="subtotal">0</span></p>
+                <p class="envio">Precio de envio: <span class="envio">30</span></p>
+                <p class="total-label">Total a pagar: <span class="total">0</span></p>
+              </div>
+              
+        </div>
+        <div class="side side-right">
+            <h2>Envío</h2>
+  
+            <form class="row g-3" >
+                <div class="col-md-6">
+                    <a href="pago1.html" class="direccion" style="align-content: center;"> 🛒 Envío a dirección </a> <br>
+                    
+                </div>
+                <div class="col-md-6">
+                    <a href="zona12.html" class="zona12" style="align-content: center;"> 🏠 Recoger en Zona 12</a>
+                </div>
+                <h2>Envío a dirección </h2> <br>
+
+                <div class="col-md-6">
+
+                    <label for="inputEmail4" class="form-label">Nombre y Apellido</label>
+                    <input type="text" class="form-control" id="inputEmail4">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="inputPassword4" class="form-label">Teléfono</label>
+                    <input type="number" class="form-control" id="inputPassword4">
+                  </div>
+                <div class="col-12">
+                  <label for="inputAddress" class="form-label">Dirección</label>
+                  <input type="text" class="form-control" id="inputAddress" placeholder="Calle, Avenida, Zona, Número de Casa, Etc.">
+                </div>
+                <div class="col-12">
+                  <input type="text" class="form-control" id="inputAddress2" placeholder="Lugar cercano de Referencia">
+                </div>
+                
+                <div class="col-md-4">
+                  <label for="inputState" class="form-label">Departamento</label>
+                  <select id="inputState" class="form-select">
+                    <option selected>Escoger</option>
+                    <option>Guatemala</option>
+                    <option>Baja Verapaz</option>
+                    <option>Alta Verapaz</option>
+                    <option>El Progreso</option>
+                    <option>Izabal</option>
+                    <option>Zacapa</option>
+                    <option>Chiquimula</option>
+                    <option>Santa Rosa</option>
+                    <option>Jalapa</option>
+                    <option>Jutiapa</option>
+                    <option>Sacatepéquez</option>
+                    <option>Chimaltenango</option>
+                    <option>Escuintla</option>
+                    <option>Sololá</option>
+                    <option>Totonicapán</option>
+                    <option>Quetzaltenango</option>
+                    <option>Suchitepéquez</option>
+                    <option>Retalhuleu</option>
+                    <option>San Marcos</option>
+                    <option>Huehuetenango</option>
+                    <option>Quiché</option>
+                    <option>Petén</option>
+                  </select>
+                </div>
+
+                <div class="col-md-4">
+                    <label for="inputState" class="form-label">Municipio</label>
+                    <select id="inputState" class="form-select">
+                      <option selected>Escoger...</option>
+                      <option>Amatitlán</option>
+                      <option>Chinautla</option>
+                      <option>Chuarrancho</option>
+                      <option>Ciudad de Guatemala</option>
+                      <option>Fraijanes</option>
+                      <option>Mixco</option>
+                      <option>Palencia</option>
+                      <option>San José del Golfo</option>
+                      <option>San José Pinula</option>
+                      <option>San Juan Sacatepéquez</option>
+                      <option>San Miguel Petapa</option>
+                      <option>San Pedro Ayampuc</option>
+                      <option>San Pedro Sacatepéquez</option>
+                      <option>San Raymundo</option>
+                      <option>Santa Catarina Pinula</option>
+                      <option>Villa Canales</option>
+                      <option>Villa Nueva</option>
+                      <option>Cubulco</option>
+                      <option>Granados</option>
+                      <option>Purulhá</option>
+                      <option>Rabinal</option>
+                      <option>Salamá</option>
+                      <option>San Jerónimo</option>
+                      <option>San Miguel Chicaj</option>
+                      <option>Santa Cruz el Chol</option>
+                      <option>Chahal</option>
+                      <option>Chisec</option>
+                      <option>Cobán</option>
+                      <option>Fray Bartolomé de las Casas</option>
+                      <option>La Tinta</option>
+                      <option>Lanquín</option>
+                      <option>Panzós</option>
+                      <option>Raxruhá</option>
+                      <option>San Cristóbal Verapaz</option>
+                      <option>San Juan Chamelco</option>
+                      <option>San Pedro Carchá</option>
+                      <option>Santa Cruz Verapaz</option>
+                      <option>Cahabón</option>
+                      <option>Senahú</option>
+                      <option>Tamahú</option>
+                      <option>Tactic</option>
+                      <option>Tucurú</option>
+                      <option>El Jícaro</option>
+                      <option>Guastatoya</option>
+                      <option>Morazán</option>
+                      <option>San Agustín Acasaguastlán</option>
+                      <option>San Antonio La Paz</option>
+                      <option>San Cristóbal Acasaguastlán</option>
+                      <option>Sanarate</option>
+                      <option>Sansare</option>
+                      <option>El Estor</option>
+                      <option>Livingston</option>
+                      <option>Los Amates</option>
+                      <option>Morales</option>
+                      <option>Puerto Barrios</option>
+                      <option>Cabañas</option>
+                      <option>Estanzuela</option>
+                      <option>Gualán</option>
+                      <option>Huité</option>
+                      <option>La Unión</option>
+                      <option>Río Hondo</option>
+                      <option>San Diego</option>
+                      <option>San Jorge</option>
+                      <option>Teculután</option>
+                      <option>Usumatlán</option>
+                      <option>Zacapa</option>
+                      <option>Camotán</option>
+                      <option>Chiquimula</option>
+                      <option>Concepción Las Minas</option>
+                      <option>Esquipulas</option>
+                      <option>Ipala</option>
+                      <option>Olopa</option>
+                      <option>Quetzaltepeque</option>
+                      <option>San Jacinto</option>
+                      <option>San José la Arada</option>
+                      <option>San Juan Ermita</option>
+                      <option>Jocotán</option>
+                      <option>Barberena</option>
+                      <option>Casillas</option>
+                      <option>Chiquimulilla</option>
+                      <option>Cuilapa</option>
+                      <option>Guazacapán</option>
+                      <option>Nueva Santa Rosa</option>
+                      <option>Oratorio</option>
+                      <option>Pueblo Nuevo Viñas</option>
+                      <option>San Juan Tecuaco</option>
+                      <option>San Rafael las Flores</option>
+                      <option>Santa Cruz Naranjo</option>
+                      <option>Santa María Ixhuatán</option>
+                      <option>Santa Rosa de Lima</option>
+                      <option>Taxisco</option>
+                      <option>Jalapa</option>
+                      <option>Mataquescuintla</option>
+                      <option>Monjas</option>
+                      <option>San Carlos Alzatate</option>
+                      <option>San Luis Jilotepeque</option>
+                      <option>San Manuel Chaparrón</option>
+                      <option>San Pedro Pinula</option>
+                      <option>Agua Blanca</option>
+                      <option>Asunción Mita</option>
+                      <option>Atescatempa</option>
+                      <option>Comapa</option>
+                      <option>Conguaco</option>
+                      <option>El Adelanto</option>
+                      <option>El Progreso</option>
+                      <option>Jalpatagua</option>
+                      <option>Jerez</option>
+                      <option>Jutiapa</option>
+                      <option>Moyuta</option>
+                      <option>Pasaco</option>
+                      <option>Quesada</option>
+                      <option>San José Acatempa</option>
+                      <option>Santa Catarina Mita</option>
+                      <option>Yupiltepeque</option>
+                      <option>Zapotitlán</option>
+                      <option>Alotenango</option>
+                      <option>Ciudad Vieja</option>
+                      <option>Jocotenango</option>
+                      <option>Antigua Guatemala</option>
+                      <option>Magdalena Milpas Altas</option>
+                      <option>Pastores</option>
+                      <option>San Antonio Aguas Calientes</option>
+                      <option>San Bartolomé Milpas Altas</option>
+                      <option>San Lucas Sacatepéquez</option>
+                      <option>San Miguel Dueñas</option>
+                      <option>Santa Catarina Barahona</option>
+                      <option>Santa Lucía Milpas Altas</option>
+                      <option>Santa María de Jesús</option>
+                      <option>Santiago Sacatepéquez</option>
+                      <option>Santo Domingo Xenacoj</option>
+                      <option>Sumpango</option>
+                      <option>Acatenango</option>
+                      <option>Chimaltenango</option>
+                      <option>El Tejar</option>
+                      <option>Parramos</option>
+                      <option>Patzicía</option>
+                      <option>Patzún</option>
+                      <option>Pochuta</option>
+                      <option>San Andrés Itzapa</option>
+                      <option>San José Poquíl</option>
+                      <option>San Juan Comalapa</option>
+                      <option>San Martín Jilotepeque</option>
+                      <option>Santa Apolonia</option>
+                      <option>Santa Cruz Balanyá</option>
+                      <option>Tecpán</option>
+                      <option>Yepocapa</option>
+                      <option>Zaragoza</option>
+                      <option>Escuintla</option>
+                      <option>Guanagazapa</option>
+                      <option>Iztapa</option>
+                      <option>La Democracia</option>
+                      <option>La Gomera</option>
+                      <option>Masagua</option>
+                      <option>Nueva Concepción</option>
+                      <option>Palín</option>
+                      <option>San José</option>
+                      <option>San Vicente Pacaya</option>
+                      <option>Santa Lucía Cotzumalguapa</option>
+                      <option>Sipacate</option>
+                      <option>Siquinalá</option>
+                      <option>Tiquisate</option>
+                      <option>Concepción</option>
+                      <option>Nahualá</option>
+                      <option>Panajachel</option>
+                      <option>San Andrés Semetabaj</option>
+                      <option>San Antonio Palopó</option>                      
+
+                    </select>
+                  </div>
+                  <div><a href="metodoPago.html" class="boton" style="align-content: center;">Continuar</a></div>
+                  
+              </form>
+
+
+
+
+
+
+        </div>
+        <footer class="footer">
+            <p>2024. Super Pet. Todos los Derechos Reservados</p>
+        </footer>
+        </div>
+    </div>
+</body>
+</html>

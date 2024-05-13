@@ -1,0 +1,250 @@
+body {
+    background-color: white;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.wrap{
+    display: flex;
+    flex-flow: row wrap;
+    text-align: center;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+  }
+
+
+.logo img {
+    max-height: 50px;
+}
+
+.tarjeta img {
+  max-height: 50px;
+}
+
+.wrap > * {
+    padding: 8px;
+    margin: 8px;
+    flex: 1 100%;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+
+  }
+
+  .header1 {
+    height: 15px;
+    background-color: white;
+    padding: 0px 30px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 0px;
+    
+  }
+  
+
+.header{
+
+    height: 50px;
+    background-color: #ff7f00; /* anaranjado */
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between ;
+    align-items: center;
+    margin-top: 10px; /* Agregamos margen superior para evitar que se solape con el bloque acceso-empleados */
+}
+
+
+.header .nav-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .header .nav-links a:hover {
+    color: black;
+  }
+
+  .product-image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+  }
+
+  .header .nav-links a.shopping-cart {
+    display: inline-block;
+    align-items: center;
+  }
+  
+  .header .nav-links a.shopping-cart .product-image {
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+  }
+  .correo{
+    margin-bottom: 0px;
+  }
+
+  .boton {
+    margin-top: 10px;
+    background-color: rgba(255, 220, 130, 0.642);
+    color: black;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    width: 110px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1);
+    /* Add display: inline-block to make the link behave like a button */
+    display: inline-block;
+    /* Add text-decoration: none to remove the underline */
+    text-decoration: none;
+  }
+  
+  .direccion{
+    margin-top: 10px;
+    background-color: rgba(255, 220, 130, 0.642);
+    color: black;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    width: 300px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1);
+    /* Add display: inline-block to make the link behave like a button */
+    display: inline-block;
+    /* Add text-decoration: none to remove the underline */
+    text-decoration: none;
+  }
+
+  .zona12{
+    margin-top: 10px;
+    background-color: rgba(255, 220, 130, 0.642);
+    color: black;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    width: 300px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1);
+    /* Add display: inline-block to make the link behave like a button */
+    display: inline-block;
+    /* Add text-decoration: none to remove the underline */
+    text-decoration: none;
+  }
+  .boton:hover {
+    background-color: rgba(255, 220, 130, 1);
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .boton:active {
+    background-color: rgba(255, 220, 130, 0.8);
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1);
+  }
+
+.producto {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+
+.product-remove {
+    cursor: pointer;
+  }
+  .icon-x {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url('x.png');
+    background-size: cover;
+  }
+.side-left {
+    margin-top: 0px;
+    background-color: white;
+    text-align: left;
+    border-style: outset;
+}
+
+.producto {
+    background-color: white;
+  }
+  
+  .precios {
+    background-color: white;
+  }
+  .precios .total-label {
+    font-weight: bold;
+  }
+
+.side-right{
+    margin-top: 0px;
+
+    background-color: white;
+    text-align: left;
+}
+
+.correo {
+  margin-bottom: 15px;
+  margin-top: 10px;
+  width: 300px; /* adjust the width to your liking */
+  height: 15px; /* adjust the height to your liking */
+  padding: 10px; /* add some padding to make it look nicer */
+  font-size: 16px; /* adjust the font size to your liking */
+  border: 1px solid #ccc; /* add a border to make it look nicer */
+  border-radius: 5px; /* add a rounded corner to make it look nicer */
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1); /* add a subtle shadow to make it look more 3D */
+  transition: all 0.3s ease; /* add a smooth transition effect when hovering */
+}
+
+.correo:focus {
+  outline: none; /* remove the default outline when focusing */
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2); /* add a stronger shadow when focusing */
+}
+
+.correo::placeholder {
+  color: #999; /* make the placeholder text color lighter */
+  font-style: italic; /* make the placeholder text italic */
+}
+.footer{
+    height: 40px;
+    background-color: orange;
+    margin-top: 0px; 
+    text-align: top;
+}
+.info{
+    margin-top: 10px;
+    padding: 8px;
+    padding-left: 13px;
+    border-style: ridge;
+}
+
+@media all and (min-width: 600px){
+    .side {
+        flex: 1;
+    }
+}
+
+@media all and (min-width: 800px){
+    .main {
+        flex: 2;
+    }
+    .side-left {
+        order: 1;
+    }
+    .side-right{
+        order: 2;
+    }
+
+    .footer{
+        order:3;
+    }
+}
