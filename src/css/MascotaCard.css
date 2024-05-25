@@ -1,0 +1,21 @@
+.mascota-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    cursor: pointer;
+    position: relative;
+}
+
+.mascota-card p {
+    margin: 5px 0;
+}
+
+.mascota-card button {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.mascota-card button:nth-child(2) {
+    right: 70px;
+}

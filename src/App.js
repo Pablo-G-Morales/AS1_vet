@@ -2,14 +2,22 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import axios from 'axios';
 import logo from './images/logo.png';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import ListaEspera from './ListaEspera';
 import CitasList from './CitasList';
 import CitaForm from './CitaForm';
 import Comentarios from './Comentarios';
-import Agenda from './Agenda'; // Asegúrate de importar el componente Agenda desde Agenda.js
+import Agenda from './Agenda';
+import Calendario from './Calendario';
+import RegistroMascota from './datosmascota';
+import RegistroDueno from './datosdueno';
+import FichaDuenos from './FichaDuenos';
+import FichaMascotas from './FichaMascotas';
+import IniciarSesion from './IniciarSesion';
+import RecuperarContrasena from './RecuperarContrasena';
 import facebookLogo from './images/facebook_logo.png';
 import instagramLogo from './images/instagram_logo.png';
+import Registro from './Registro'; // Importación añadida
 
 function App() {
   const [citas, setCitas] = useState([]);
@@ -60,27 +68,19 @@ function App() {
     console.log('Cita actualizada:', editedCita);
   };
 
+  const reloadPage = () => {
+    window.location.reload();
+  };
+
   return (
     <Router>
       <div className="App">
         <header className="App-header">
           <img src={logo} alt="Logo" />
-          <div className="menu">
-            <span className="menu-item">Calendario</span>
-            <span className="menu-item">Programar Citas</span> 
-            <span className="menu-item">Registro</span>
-            <span className="menu-item">Recordatorios</span>
-            <span className="menu-item">Reportes y Análisis</span>
-          </div>
-          <div className="menu">
-            <Link to="/cita-form" className="menu-item">Historial</Link>
-            <Link to="/lista-espera" className="menu-item">Lista de Espera</Link>
-            <Link to="/comentarios" className="menu-item">Comentarios</Link>
-            <Link to="/agenda" className="menu-item">Agenda</Link>
-          </div>
+          <Menu />
           <hr className="divider" />
           <div className="header-content orange-background">
-            <h2 className="header-title">Ingrese los datos</h2>
+            <h2 className="header-title">Bienvenido</h2>
             <div className="social-media">
               <a href="https://www.facebook.com/veterinariasuperpet" target="_blank" rel="noopener noreferrer">
                 <img src={facebookLogo} alt="Facebook" style={{ width: 24, height: 24 }} />
@@ -99,21 +99,53 @@ function App() {
             <Route path="/lista-espera" element={<ListaEspera listaEspera={listaEspera} />} />
             <Route path="/historial" element={<CitasList citas={citas} onUpdate={handleUpdate} />} />
             <Route path="/comentarios" element={<Comentarios />} />
-            <Route path="/cita-form" element={<React.Fragment>
-              <CitaForm onUpdate={handleFormSubmit} />
-              <hr className="divider" />
-              <CitasList citas={citas} onUpdate={handleUpdate} />
-            </React.Fragment>} />
-            <Route path="/agenda" element={<Agenda />} /> {/* Aquí se usa el componente Agenda */}
-            <Route path="/" element={<React.Fragment>
-              <CitaForm onUpdate={handleFormSubmit} />
-              <hr className="divider" />
-              <CitasList citas={citas} onUpdate={handleUpdate} />
-            </React.Fragment>} />
+            <Route path="/cita-form" element={
+              <React.Fragment>
+                <CitaForm onUpdate={handleFormSubmit} />
+                <hr className="divider" />
+                <CitasList citas={citas} onUpdate={handleUpdate} />
+              </React.Fragment>
+            } />
+            <Route path="/agenda" element={<Agenda />} />
+            <Route path="/calendario" element={<Calendario />} />
+            <Route path="/registro-dueno" element={<RegistroDueno />} />
+            <Route path="/registro-mascota" element={<RegistroMascota />} />
+            <Route path="/ficha-duenos" element={<FichaDuenos />} />
+            <Route path="/ficha-mascotas" element={<FichaMascotas />} />
+            <Route path="/iniciar-sesion" element={<IniciarSesion />} />
+            <Route path="/recuperar-contrasena" element={<RecuperarContrasena />} />
+            <Route path="/registro" element={<Registro />} /> {/* Ruta agregada para el componente de registro */}
           </Routes>
         </main>
+        <footer>
+          <button onClick={reloadPage}>Actualizar Datos</button>
+        </footer>
       </div>
     </Router>
+  );
+}
+
+function Menu() {
+  const location = useLocation();
+
+  return (
+    !location.pathname.includes('iniciar-sesion') &&
+    !location.pathname.includes('recuperar-contrasena') &&
+    !location.pathname.includes('registro') && (
+      <>
+        <div className="menu">
+          <Link to="/registro-dueno" className="menu-item">Registrar Dueño</Link>
+          <Link to="/ficha-duenos" className="menu-item">Ficha Dueños</Link>
+          <Link to="/ficha-mascotas" className="menu-item">Ficha Mascotas</Link>
+        </div>
+        <div className="menu">
+          <Link to="/cita-form" className="menu-item">Historial</Link>
+          <Link to="/lista-espera" className="menu-item">Lista de Espera</Link>
+          <Link to="/comentarios" className="menu-item">Comentarios</Link>
+          <Link to="/agenda" className="menu-item">Agenda</Link>
+        </div>
+      </>
+    )
   );
 }
 

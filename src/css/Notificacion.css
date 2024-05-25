@@ -1,0 +1,37 @@
+.notification {
+  background-color: #fa9908; /* Green */
+  color: white;
+  text-align: center;
+  padding: 15px 30px;
+  border-radius: 8px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  opacity: 0;
+  animation: fadeInOut 3s forwards;
+}
+
+.notification p {
+  margin: 0;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+  10% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+  90% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -40%);
+  }
+}

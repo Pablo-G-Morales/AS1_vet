@@ -1,0 +1,52 @@
+.ficha-dueno {
+    text-align: center;
+  }
+  
+  .dueno-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .dueno-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    width: 200px;
+    text-align: left;
+  }
+  
+  .edit-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 00%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  
+  .modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  .modal-content .edit-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .modal-content .edit-form input,
+  .modal-content .edit-form button {
+    margin: 10px 0;
+  }
+  

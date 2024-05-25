@@ -1,4 +1,3 @@
-// database.js
 const mysql = require('mysql');
 
 const connection = mysql.createConnection({
@@ -10,10 +9,10 @@ const connection = mysql.createConnection({
 
 connection.connect((err) => {
   if (err) {
-    console.error('Error connecting to the database:', err);
+    console.error('Error al conectar a la base de datos:', err);
     return;
   }
-  console.log('Connected to the database');
+  console.log('Conectado a la base de datos datospacientes');
 });
 
 module.exports = connection;

@@ -1,22 +1,20 @@
-// CitasList.js
-
 import React from 'react';
 import CitaItem from './CitaItem';
+import './css/CitasList.css'; // Importar el archivo de estilos CSS
 
 const CitasList = ({ citas, onUpdate }) => {
   return (
-    <div>
-      <center>
-        <h2>Historial de Citas</h2>
-      </center>
-      <ul>
+    <div className="citas-list-container"> {/* Aplicar una clase CSS para el contenedor */}
+      <h2 className="citas-list-heading">Historial de Citas</h2>
+      <div className="citas-list">
         {citas.map((cita, index) => (
-          <CitaItem key={cita.id} cita={cita} onUpdate={onUpdate} />
+          <div key={cita.id} className="cita-item-container"> {/* Contenedor de cada cita */}
+            <CitaItem cita={cita} onUpdate={onUpdate} />
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
 
 export default CitasList;
-

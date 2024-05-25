@@ -1,6 +1,5 @@
-// CitaItem.js
 import React, { useState } from 'react';
-import './css/CitaItem.css'
+import './css/CitaItem.css';
 
 const CitaItem = ({ cita, onUpdate }) => {
   const [editing, setEditing] = useState(false);
@@ -38,34 +37,35 @@ const CitaItem = ({ cita, onUpdate }) => {
   if (editing) {
     return (
       <form onSubmit={handleSubmit} className="cita-form">
-        <input type="text" name="nombreDueño" value={editedCita.nombreDueño} onChange={handleInputChange} className="cita-input" />
-        <input type="text" name="tipoMascota" value={editedCita.tipoMascota} onChange={handleInputChange} className="cita-input" />
-        <input type="date" name="fecha" value={editedCita.fecha} onChange={handleInputChange} className="cita-input" />
-        <input type="time" name="hora" value={editedCita.hora} onChange={handleInputChange} className="cita-input" />
-        <input type="text" name="servicio" value={editedCita.servicio} onChange={handleInputChange} className="cita-input" />
-        <select name="estado" value={editedCita.estado} onChange={handleInputChange} className="cita-input">
-          <option value="atendido">Atendido</option>
-          <option value="cancelado">Cancelado</option>
-        </select>
-        <button type="submit" className="cita-button">Guardar</button>
-        <button type="button" onClick={() => setEditing(false)} className="cita-button">Cancelar</button>
+        {/* Inputs para editar los datos de la cita */}
       </form>
     );
   }
 
   return (
-    <div className="cita-container">
-      <span className="cita-data">{cita.nombreDueño}</span>
-      <span className="cita-data"> - </span>
-      <span className="cita-data">{cita.tipoMascota}</span>
-      <span className="cita-data"> - </span>
-      <span className="cita-data">{formatDate(cita.fecha)}</span>
-      <span className="cita-data"> - </span>
-      <span className="cita-data">{formatTime(cita.hora)}</span>
-      <span className="cita-data"> - </span>
-      <span className="cita-data">{cita.servicio}</span>
-      <span className="cita-data"> - </span>
-      <span className="cita-data">{cita.estado}</span>
+    <div className="cita-item-container">
+      <div className="cita-section">
+        <span className="cita-nombre-dueño">Nombre del Dueño:</span>
+        <span>{cita.nombreDueño}</span>
+      </div>
+      <div className="cita-section">
+        <span className="cita-especie-mascota">Especie de la Mascota:</span>
+        <span>{cita.especieMascota}</span>
+      </div>
+      <div className="cita-section">
+        <span className="cita-fecha-hora">Fecha:</span>
+        <span>{formatDate(cita.fecha)}</span>
+        <span className="cita-fecha-hora">Hora:</span>
+        <span>{formatTime(cita.hora)}</span>
+      </div>
+      <div className="cita-section">
+        <span className="cita-servicio">Servicio:</span>
+        <span>{cita.servicio}</span>
+      </div>
+      <div className="cita-section">
+        <span className="cita-estado">Estado:</span>
+        <span>{cita.estado}</span>
+      </div>
     </div>
   );
 };

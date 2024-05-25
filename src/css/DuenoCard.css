@@ -1,0 +1,13 @@
+.dueno-card {
+    border: 11px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.dueno-card:hover {
+    transform: scale(1.05);
+}
+

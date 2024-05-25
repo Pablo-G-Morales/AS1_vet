@@ -49,8 +49,8 @@
   }
   
   .form-button {
-    background-color: #4CAF50;
-    color: #fff;
+    background-color: #f0a80d;
+    color: #020707;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -58,5 +58,5 @@
   }
   
   .form-button:hover {
-    background-color: #3e8e41;
+    background-color: #f8c73f;
   }

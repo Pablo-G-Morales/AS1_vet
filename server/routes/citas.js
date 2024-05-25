@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const connection = require('../database'); // Importa la conexión a la base de datos desde database.js
+const connection = require('../database');
 
-// Obtener todas las citas
+// Obtener todas las citas del historial
 router.get('/', (req, res, next) => {
-  connection.query('SELECT * FROM citas', (error, results, fields) => {
+  connection.query('SELECT * FROM historialcitas', (error, results, fields) => {
     if (error) {
       next(error);
       return;
@@ -13,21 +13,20 @@ router.get('/', (req, res, next) => {
   });
 });
 
-// Crear una nueva cita
+// Crear una nueva cita en el historial
 router.post('/', (req, res, next) => {
-  const { id, nombreDueño, tipoMascota, fecha, hora, servicio, estado } = req.body; // Agregamos el campo id
-  console.log('Datos recibidos en el backend:', req.body); // Agregado para depurar
+  const { nombreDueño, especieMascota, fecha, hora, servicio, estado } = req.body;
   connection.query(
-    'INSERT INTO citas (id, nombreDueño, tipoMascota, fecha, hora, servicio, estado) VALUES (?, ?, ?, ?, ?, ?, ?)', // Incluimos id en la inserción
-    [id, nombreDueño, tipoMascota, fecha, hora, servicio, estado],
+    'INSERT INTO historialcitas (nombreDueño, especieMascota, fecha, hora, servicio, estado) VALUES (?, ?, ?, ?, ?, ?)',
+    [nombreDueño, especieMascota, fecha, hora, servicio, estado],
     (error, results, fields) => {
       if (error) {
-        console.error('Error al insertar cita en la base de datos:', error); // Agregado para depurar
+        console.error('Error al insertar cita en el historial:', error);
         next(error);
         return;
       }
-      console.log('Cita insertada correctamente en la base de datos'); // Agregado para depurar
-      res.status(201).send('Cita insertada correctamente');
+      console.log('Cita insertada correctamente en el historial');
+      res.status(201).send('Cita insertada correctamente en el historial');
     }
   );
 });

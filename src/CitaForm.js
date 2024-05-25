@@ -52,56 +52,6 @@ const CitaForm = () => {
 
   return (
     <div>
-      <h2>Insertar Cita En Historial</h2>
-      <Formik
-        initialValues={{
-          nombreDueño: '',
-          tipoMascota: '',
-          fecha: '',
-          hora: '',
-          servicio: '',
-          estado: '---'
-        }}
-        onSubmit={handleSubmit}
-      >
-        {({ handleSubmit, handleReset }) => (
-          <form onSubmit={handleSubmit}>
-            {error && <p className="error">{error}</p>}
-            {success && <p className="success">Cita insertada correctamente</p>}
-            <div className="form-group">
-              <div className="field">
-                <label htmlFor="nombreDueño">Nombre del Dueño:</label>
-                <Field type="text" id="nombreDueño" name="nombreDueño" />
-              </div>
-              <div className="field">
-                <label htmlFor="tipoMascota">Tipo de Mascota:</label>
-                <Field type="text" id="tipoMascota" name="tipoMascota" />
-              </div>
-              <div className="field">
-                <label htmlFor="fecha">Fecha:</label>
-                <Field type="date" id="fecha" name="fecha" />
-              </div>
-              <div className="field">
-                <label htmlFor="hora">Hora:</label>
-                <Field type="time" id="hora" name="hora" />
-              </div>
-              <div className="field">
-                <label htmlFor="servicio">Servicio:</label>
-                <Field type="text" id="servicio" name="servicio" />
-              </div>
-              <div className="field">
-                <label htmlFor="estado">Estado:</label>
-                <Field as="select" id="estado" name="estado">
-                  <option value="---">---</option>
-                  <option value="atendido">Atendido</option>
-                  <option value="cancelado">Cancelado</option>
-                </Field>
-              </div>
-            </div>
-            <button type="submit" disabled={loading} /*onClick={handleReset}*/>Guardar</button>
-          </form>
-        )}
-      </Formik>
       {/* Mostrar citas existentes */}
     </div>
   );

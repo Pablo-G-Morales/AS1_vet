@@ -1,44 +1,37 @@
-.citas-list {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .citas-list h2 {
-    text-align: center;
-    margin-bottom: 1rem;
-    color: #333;
-  }
-  
-  .citas-list table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .citas-list th,
-  .citas-list td {
-    padding: 0.5rem;
-    border-bottom: 1px solid #ddd;
-    text-align: left;
-  }
-  
-  .citas-list th {
-    background-color: #f2f2f2;
-    font-weight: bold;
-  }
-  
-  .citas-list tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-  
-  .citas-list .cita-actions {
-    display: flex;
-    align-items: center;
-  }
-  
-  .citas-list .cita-actions button {
-    margin-left: 1rem;
-  }
+.cita-item-container {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  transition: transform 0.3s ease; /* Animación al pasar el mouse */
+}
+
+/* Estilos para cada sección de datos */
+.cita-section {
+  margin-bottom: 10px;
+}
+
+/* Estilos para el nombre del dueño */
+.cita-nombre-dueño {
+  font-weight: bold;
+}
+
+/* Estilos para la especie de la mascota */
+.cita-especie-mascota {
+  color: #555; /* Color gris para la especie de la mascota */
+}
+
+/* Estilos para la fecha y la hora */
+.cita-fecha-hora {
+  color: #777; /* Color gris claro para la fecha y la hora */
+}
+
+/* Estilos para el servicio */
+.cita-servicio {
+  font-style: italic; /* Estilo cursiva para el servicio */
+}
+
+/* Estilos para el estado */
+.cita-estado {
+  font-weight: bold; /* Texto en negrita para el estado */
+}

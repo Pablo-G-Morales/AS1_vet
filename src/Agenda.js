@@ -1,87 +1,74 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './css/Agenda.css'; // Importamos el archivo CSS
+import { differenceInDays } from 'date-fns';
+import './css/Agenda.css';
 
 const API_URL = 'http://localhost:5000/api';
 
 function Agenda() {
-  const [schedules, setSchedules] = useState([]);
   const [newSchedule, setNewSchedule] = useState({
     day_name: '',
-    activity_name: '',
-    start_time: '',
-    end_time: '',
+    doctor: ''
   });
+  const [doctorActivities, setDoctorActivities] = useState([]);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const fetchSchedules = async () => {
-      try {
-        const response = await axios.get(`${API_URL}/schedules`, {
-          headers: {
-            Accept: 'application/json'
-          }
-        });
-        setSchedules(response.data);
-      } catch (error) {
-        setError(error.message);
-      }
-    };
+  const daysOfWeek = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'];
+  const doctors = ['Dra.Alejandra', 'Dr.Felipe', 'Dr.Dominguez', 'Dra.Annai'];
 
-    fetchSchedules();
-  }, []);
-
-  const validateInput = () => {
-    const { day_name, activity_name, start_time, end_time } = newSchedule;
-    if (!day_name || !activity_name || !start_time || !end_time) {
-      return false;
-    }
-
-    return true;
+  const splitDateString = (date) => {
+    const year = date.substring(0, 4);
+    const month = date.substring(5, 7);
+    const day = date.substring(8, 10);
+    return { year, month, day };
   };
 
-  const handleAddActivity = async () => {
-    if (!validateInput()) {
-      setError('Por favor, completa todos los campos.');
+  const getDaysUntilDate = (date) => {
+    const currentDate = new Date();
+    const targetDate = new Date(date);
+    const difference = differenceInDays(targetDate, currentDate);
+
+    if (difference === 1) {
+      return 'Mañana';
+    } else if (difference === 0) {
+      return 'Hoy';
+    } else if (difference < 0) {
+      return 'Ya pasó';
+    } else {
+      return `En ${difference} días`;
+    }
+  };
+
+  const fetchDoctorActivities = async () => {
+    if (!newSchedule.day_name || !newSchedule.doctor) {
+      setError('Por favor, selecciona un día y un doctor.');
       return;
     }
 
     try {
-      const response = await axios.post(`${API_URL}/schedules`, newSchedule);
-      setSchedules(prevSchedules => [...prevSchedules, response.data]);
-      setNewSchedule({ day_name: '', activity_name: '', start_time: '', end_time: '' });
+      const response = await axios.get(`${API_URL}/CalendarioBack/doctor-schedule`, {
+        params: {
+          day_name: newSchedule.day_name,
+          doctor: newSchedule.doctor
+        }
+      });
+      setDoctorActivities(response.data);
       setError(null);
     } catch (error) {
       setError(error.message);
     }
   };
 
-  const daysOfWeek = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'];
+  useEffect(() => {
+    if (newSchedule.day_name && newSchedule.doctor) {
+      fetchDoctorActivities();
+    }
+  }, [newSchedule.day_name, newSchedule.doctor]);
 
   return (
     <div className="agenda-container">
       <h1>Agenda</h1>
       {error && <div className="error-message">{error}</div>}
-      <table>
-        <thead>
-          <tr>
-            <th>Día</th>
-            <th>Actividad</th>
-            <th>Hora de inicio</th>
-            <th>Hora de fin</th>
-          </tr>
-        </thead>
-        <tbody>
-          {schedules.map((schedule, index) => (
-            <tr key={index}>
-              <td>{schedule.day_name}</td>
-              <td>{schedule.activity_name}</td>
-              <td>{schedule.start_time}</td>
-              <td>{schedule.end_time}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
       <form>
         <label className="form-label">
           Día:
@@ -93,19 +80,42 @@ function Agenda() {
           </select>
         </label>
         <label className="form-label">
-          Actividad:
-          <input className="form-input" type="text" value={newSchedule.activity_name} onChange={e => setNewSchedule({ ...newSchedule, activity_name: e.target.value })} placeholder="Ingresa el nombre de la actividad" />
+          Doctor:
+          <select className="form-select" value={newSchedule.doctor} onChange={e => setNewSchedule({ ...newSchedule, doctor: e.target.value })}>
+            <option value="">Selecciona un doctor</option>
+            {doctors.map(doctor => (
+              <option key={doctor} value={doctor}>{doctor}</option>
+            ))}
+          </select>
         </label>
-        <label className="form-label">
-          Hora de inicio:
-          <input className="form-input" type="text" value={newSchedule.start_time} onChange={e => setNewSchedule({ ...newSchedule, start_time: e.target.value })} placeholder="HH:MM" />
-        </label>
-        <label className="form-label">
-          Hora de fin:
-          <input className="form-input" type="text" value={newSchedule.end_time} onChange={e => setNewSchedule({ ...newSchedule, end_time: e.target.value })} placeholder="HH:MM" />
-        </label>
-        <button className="form-button" type="button" onClick={handleAddActivity}>Agregar Actividad</button>
+        <button className="form-button" type="button" onClick={fetchDoctorActivities}>Mostrar Actividades</button>
       </form>
+
+      <h2>Calendario</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre del Dueño</th>
+            <th>Apellido del Dueño</th>
+            <th>Especie</th>
+            <th>Raza</th>
+            <th>Horario</th>
+            <th>Servicio</th>
+          </tr>
+        </thead>
+        <tbody>
+          {doctorActivities.map((activity, index) => (
+            <tr key={index}>
+              <td>{activity.nombre}</td>
+              <td>{activity.apellido}</td>
+              <td>{activity.especie}</td>
+              <td>{activity.raza}</td>
+              <td>{activity.horario}</td>
+              <td>{activity.servicio}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }

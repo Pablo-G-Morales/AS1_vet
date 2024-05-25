@@ -1,0 +1,106 @@
+/* Calendario.css */
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.calendar-container,
+.form-container {
+  flex: 1;
+  min-width: 300px;
+  margin: 10px;
+}
+
+.calendar-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.calendar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.calendar-header select {
+  margin: 0 5px;
+}
+
+.calendar-body {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  justify-items: center;
+}
+
+.calendar-day {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.calendar-day.empty {
+  visibility: hidden;
+}
+
+.form-container {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
+}
+
+.data-container {
+  margin-top: 20px;
+}
+
+.appointment {
+  margin-bottom: 10px;
+}
