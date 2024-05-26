@@ -15,7 +15,6 @@ const CitaItem = ({ cita, onUpdate }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Formatear la fecha antes de enviarla al backend
     const updatedCita = {
       ...editedCita,
       fecha: new Date(editedCita.fecha).toISOString() // Formatear fecha
@@ -37,7 +36,6 @@ const CitaItem = ({ cita, onUpdate }) => {
   if (editing) {
     return (
       <form onSubmit={handleSubmit} className="cita-form">
-        {/* Inputs para editar los datos de la cita */}
       </form>
     );
   }

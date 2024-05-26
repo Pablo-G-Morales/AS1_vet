@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const connection = require('../database');
 
-// Ruta para agendar una nueva cita
 router.post('/', (req, res) => {
     const { nombre, fecha, doctor, duracion, horario, servicio, dueno_id } = req.body;
 
@@ -36,7 +35,6 @@ router.get('/', (req, res) => {
     });
 });
 
-// Ruta para obtener citas filtradas por doctor y día, incluyendo el campo fecha
 router.get('/doctor-schedule', (req, res) => {
     const { day_name, doctor } = req.query;
 

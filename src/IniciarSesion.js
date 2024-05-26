@@ -25,7 +25,7 @@ function IniciarSesion() {
       console.log(response.data);
       alert('Inicio de sesión exitoso');
       // Redirige al usuario a la página de datosdueno.js después del inicio de sesión exitoso
-      navigate('/registro-dueno'); // Ajusta la ruta según sea necesario
+      navigate('/registro-dueno'); 
     } catch (error) {
       console.error('Error al iniciar sesión:', error.response.data);
       alert('Error al iniciar sesión: ' + error.response.data.error);

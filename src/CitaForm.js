@@ -23,7 +23,6 @@ const CitaForm = () => {
       });
   };
 
-  // Llamar a fetchCitas al montar el componente
   useEffect(() => {
     fetchCitas();
   }, []);
@@ -33,14 +32,12 @@ const CitaForm = () => {
     setSuccess(false);
     setLoading(true);
 
-    // Enviar los datos del formulario al backend
     axios.post('http://localhost:5000/api/citas', values)
       .then(response => {
         console.log('Respuesta del servidor:', response.data);
         console.log('Cita insertada correctamente');
         setSuccess(true);
         setLoading(false);
-        // Después de agregar una nueva cita, volver a cargar la lista de citas
         fetchCitas();
       })
       .catch(error => {
@@ -52,7 +49,6 @@ const CitaForm = () => {
 
   return (
     <div>
-      {/* Mostrar citas existentes */}
     </div>
   );
 };

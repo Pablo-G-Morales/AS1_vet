@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './css/comentarios.css'; // Importa el archivo CSS para aplicar estilos
+import './css/comentarios.css';
 
 // Importar las imágenes
 import perro_comentarios from './images/perro_comentarios.png';
@@ -14,7 +14,7 @@ function Comentarios() {
   const [error, setError] = useState('');
   const [errorVisible, setErrorVisible] = useState(false);
 
-  const baseURL = 'http://localhost:5000/api'; // Cambia esto según la URL de tu backend
+  const baseURL = 'http://localhost:5000/api'; 
 
   useEffect(() => {
     // Función para obtener los comentarios desde el backend
@@ -61,11 +61,9 @@ function Comentarios() {
     }
   };
 
-  // Función para votar por un comentario
   const votarComentario = async (id, tipo) => {
     try {
       await axios.put(`${baseURL}/comentariosT/${id}/votar/${tipo}`);
-      // Actualizar la lista de comentarios después de votar
       const response = await axios.get(`${baseURL}/comentariosT`);
       setComentarios(response.data);
     } catch (error) {
@@ -85,7 +83,6 @@ function Comentarios() {
         <button onClick={enviarComentario}>Enviar</button>
       </div>
 
-      {/* Mini recuadro dinámico para mostrar el mensaje de error */}
       {errorVisible && (
         <div className="error-box">
           <p className="error-message">{error}</p>

@@ -7,7 +7,6 @@ const actualizarContrasena = require('./Inserciones/actualizarContrasena');
 const app = express();
 const port = 5000;
 
-// Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
@@ -37,7 +36,7 @@ app.use((err, req, res, next) => {
     res.status(500).send('Algo salió mal!');
 });
 
-// Endpoint para registrar un nuevo usuario
+// registrar un nuevo usuario
 app.post('/api/usuarios', (req, res) => {
     const user = req.body;
     const query = 'INSERT INTO usuarios SET ?';
@@ -52,7 +51,7 @@ app.post('/api/usuarios', (req, res) => {
     });
 });
 
-// Endpoint para iniciar sesión
+// iniciar sesión
 app.post('/api/login', (req, res) => {
     const { email, password } = req.body;
     const query = 'SELECT * FROM usuarios WHERE correoprofesional = ? AND contrasena = ?';
@@ -70,7 +69,7 @@ app.post('/api/login', (req, res) => {
     });
 });
 
-// Endpoint para recuperar contraseña
+// recuperar contraseña
 app.post('/api/recuperar-contrasena', (req, res) => {
     const { email, password } = req.body;
 

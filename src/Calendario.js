@@ -109,7 +109,6 @@ const Calendar = () => {
             setNotificationMessage('');
           }, 3000);
 
-          // Resetear el formulario
           event.target.reset();
           setSelectedDate('');
           setError('');

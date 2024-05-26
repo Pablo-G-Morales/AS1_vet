@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // Importa Link desde react-router-dom
+import { Link } from 'react-router-dom';
 import './css/dueno.css';
 import Notification from './Notificacion';
 
@@ -42,17 +42,15 @@ function RegistroDueño() {
             }),
         })
         .then(() => {
-            // Aquí puedes mostrar un mensaje de éxito
             setNotification("Dueño registrado exitosamente.");
             // Redirigir a datosmascota.js
-            window.location.href = '/registro-mascota'; // Cambia la ruta según la configuración de tu enrutador
+            window.location.href = '/registro-mascota'; 
         })
         .catch(error => {
             console.error('Error al enviar datos:', error);
             setError("Error al registrar dueño.");
         });
 
-        // Limpiar campos y errores después de registrar
         setIdentificacion("");
         setNombre("");
         setApellido("");
@@ -63,7 +61,7 @@ function RegistroDueño() {
 
     return (
         <div className="container">
-            <h2 style={{textAlign: "center"}}>Registro de Dueño</h2> {/* Añade el estilo directamente aquí */}
+            <h2 style={{textAlign: "center"}}>Registro de Dueño</h2> 
             <form onSubmit={handleSubmit} className="form-container">
                 <div className="form-group">
                     <label htmlFor="identificacion">Identificación</label>
@@ -93,7 +91,6 @@ function RegistroDueño() {
                 <button type="submit">Siguiente</button>
             </form>
 
-            {/* Mostrar mensaje de error si existe */}
             {error && <div className="error-message">{error}</div>}
 
             {/* Mostrar notificación */}

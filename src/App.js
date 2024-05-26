@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import axios from 'axios';
 import logo from './images/logo.png';
-import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, useLocation, Navigate } from 'react-router-dom';
 import ListaEspera from './ListaEspera';
 import CitasList from './CitasList';
 import CitaForm from './CitaForm';
@@ -17,7 +17,7 @@ import IniciarSesion from './IniciarSesion';
 import RecuperarContrasena from './RecuperarContrasena';
 import facebookLogo from './images/facebook_logo.png';
 import instagramLogo from './images/instagram_logo.png';
-import Registro from './Registro'; // Importación añadida
+import Registro from './Registro'; 
 
 function App() {
   const [citas, setCitas] = useState([]);
@@ -96,6 +96,8 @@ function App() {
         </header>
         <main>
           <Routes>
+            <Route path="/" element={<Navigate to="/iniciar-sesion" />} />
+            <Route path="/iniciar-sesion" element={<IniciarSesion />} />
             <Route path="/lista-espera" element={<ListaEspera listaEspera={listaEspera} />} />
             <Route path="/historial" element={<CitasList citas={citas} onUpdate={handleUpdate} />} />
             <Route path="/comentarios" element={<Comentarios />} />
@@ -112,9 +114,8 @@ function App() {
             <Route path="/registro-mascota" element={<RegistroMascota />} />
             <Route path="/ficha-duenos" element={<FichaDuenos />} />
             <Route path="/ficha-mascotas" element={<FichaMascotas />} />
-            <Route path="/iniciar-sesion" element={<IniciarSesion />} />
             <Route path="/recuperar-contrasena" element={<RecuperarContrasena />} />
-            <Route path="/registro" element={<Registro />} /> {/* Ruta agregada para el componente de registro */}
+            <Route path="/registro" element={<Registro />} /> 
           </Routes>
         </main>
         <footer>

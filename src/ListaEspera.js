@@ -63,7 +63,7 @@ function ListaEspera() {
           const turno = doctorAsociado ? generarTurno(doctorAsociado) : null;
           
           // Obtener el estado del backend, por ahora se inicializa en 'En espera'
-          const estado = 'En espera'; // Cambia esto para obtener el estado real desde el backend
+          const estado = 'En espera'; 
 
           return { dueno, mascota: mascotaAsociada || null, doctor: doctorAsociado, fecha: fechaCita, hora: horaCita, servicio: servicioCita, turno: turno, estado: estado };
         })

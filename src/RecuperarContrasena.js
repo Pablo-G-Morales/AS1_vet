@@ -27,7 +27,6 @@ function RecuperarContrasena() {
       .then(response => {
         console.log('Contraseña actualizada correctamente:', response.data);
         alert('Contraseña actualizada correctamente');
-        // Redirigir a otra página si es necesario
       })
       .catch(error => {
         console.error('Error al recuperar la contraseña:', error);

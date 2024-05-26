@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './css/DatosMascota.css';
 import { useNavigate } from 'react-router-dom'; 
-import Notification from './Notificacion'; // Importar el componente de notificación
+import Notification from './Notificacion'; 
 
 function RegistroMascota() {
     const [dueños, setDueños] = useState([]);
